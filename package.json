@@ -1,0 +1,7 @@
+{
+  "author": "ZETA",
+  "license": "MIT",
+  "dependencies": {
+    "chart.js": "^4.3.0"
+  }
+}

@@ -1,0 +1,18 @@
+.card{
+    background-color: #FFFFFF;
+    transition: all .3s;
+    border: 1.5px solid #1D4E89;
+    border-radius: 15px;
+    align-items: center;
+}
+.card h1{
+    color: #4f7fd8;
+    width: 50%;
+    font-weight: bold;
+    margin-top: 10px;
+    border-bottom: 2px solid #1D4E89;
+    border-radius: 10px;
+}
+.card p{
+    color: #1D4E89;
+}

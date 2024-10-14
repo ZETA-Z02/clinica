@@ -1,0 +1,12 @@
+#clientes-search{
+    width: 100%;
+}
+h1{
+    color: #183467;
+    font-weight: bold;
+    margin-top: 10px;
+    border-bottom: 2px solid #02244f;
+}
+td{
+    text-align: center;
+}
