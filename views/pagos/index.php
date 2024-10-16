@@ -5,7 +5,7 @@
         <div class="cell grid-x align-center">
             <h1>Pagos de Clientes</h1>
         </div>
-        <div class="grid-x cell">
+        <div class="grid-x cell callout">
             <span>Buscador</span><input type="text" class="search" id="search">
         </div>
         <div class="cell grid-x table-scroll shadow">
@@ -76,8 +76,11 @@
                 </tbody>
             </table>
         </div>
-        <div class="cell grid-x align-left">
+        <div class="cell large-6 grid-x align-left">
             <button class="button" id="btn-cerrar-detalles">Cerrar</button>
+        </div>
+        <div class="cell large-6 grid-x align-right">
+            <a class="button success" id="btn-boleta" target="_blank">Imprimir Boleta</a>
         </div>
     </div>
 </div>

@@ -34,6 +34,12 @@ $(document).ready(function () {
     });
     $("#pagos-detalles").show();
   });
+  // IMPRIMIR BOLETA
+  $(document).on("click",'#btn-boleta',function(){
+    console.log($("#btn-detalle").attr('id-data'));
+    let id = $("#btn-detalle").attr('id-data');
+    let btn = $(this).attr('href', `http://${host}/clinica/pagos/boleta/${id}`);
+  });
   // cerrar detalles
   $("#btn-cerrar-detalles,#btn-cancelar-pago").on('click',function(){
     $("#pagos-detalles").hide();

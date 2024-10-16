@@ -1,4 +1,5 @@
 <?php 
+
 class PagosModel extends Model{
     function __construct(){
         parent::__construct();
@@ -8,6 +9,7 @@ class PagosModel extends Model{
         $data = $this->conn->ConsultaCon($sql);
         return $data;
     }
+    // para la tabla detalles de pagos y para la boleta
     public function GetPagos($id){
         $sql = "SELECT pd.* FROM pago_detalles pd JOIN pagos p ON pd.idpago = p.idpago WHERE pd.idpago = '$id';";
         $data = $this->conn->ConsultaCon($sql);
@@ -44,6 +46,11 @@ class PagosModel extends Model{
     public function Search($nombre){
         $sql = "SELECT CONCAT(c.nombre,' ',c.apellidos) as nombres,p.idcliente,p.idpago,p.monto,p.saldo,p.total FROM pagos p JOIN clientes c ON p.idcliente = c.idcliente WHERE c.nombre LIKE '%$nombre%' OR c.apellidos LIKE '%$nombre%' OR c.dni LIKE '%$nombre%';";
         $data = $this->conn->ConsultaCon($sql);
+        return $data;
+    }
+    public function BoletaDatos($idpago){
+        $sql = "SELECT CONCAT(c.nombre,' ',c.apellidos) as nombres, p.idpago, p.monto, p.saldo,p.igv,p.total from pagos p join clientes c on c.idcliente = p.idcliente where idpago = '$idpago';";
+        $data = $this->conn->ConsultaArray($sql);
         return $data;
     }
 }
