@@ -23,11 +23,11 @@
             </div>
             <div class="cell inputs">
                 <label for="usuario" class="">Nombre de usuario para ingresar al sistema: </label>
-                <input type="text" name="usuario" id="usuario" value="<?php echo $this->data['usuario'];?>">
+                <input type="text" name="usuario" id="usuario">
             </div>
             <div class="cell inputs">
                 <label for="password" class="">Password de usuario: </label>
-                <input type="password" name="password" id="password" value="<?php echo $this->data['password'];?>">
+                <input type="password" name="password" id="password">
             </div>
             <div class="cell grid-x align-center">
                 <button class="button">Crear</button>

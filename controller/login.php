@@ -17,6 +17,8 @@ class Login extends Controller
 		if($username == $data['usuario'] && $password == $data['password']){
 			if($data['estado'] == 1){
 				$_SESSION['katari'] = 'katari';
+				$_SESSION['idpersonal'] = $data['idpersonal'];
+				$_SESSION['nivel'] = $data['nivel'];
 				header('location: '.constant('URL').'dashboard/render');	
 			}else{
 				$this->render();

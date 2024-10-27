@@ -43,11 +43,11 @@
         <form action="" method="POST" class="grid-x cell" id="form-cliente">
             <div class="cell inputs">
                 <label for="dni" class="">DNI: </label>
-                <input type="text" name="dni" id="dni">
+                <input type="text" name="dni" id="dni" required>
             </div>
             <div class="cell inputs">
                 <label for="telefono" class="">Telefono: </label>
-                <input type="text" name="telefono" id="telefono">
+                <input type="text" name="telefono" id="telefono" required>
             </div>
             <div class="cell inputs">
                 <label for="nombre" class="">Nombre: </label>
@@ -59,7 +59,7 @@
             </div>
             <div class="cell inputs">
                 <label for="monto-total" class="">Monto total: </label>
-                <input type="text" name="monto-total" id="monto-total">
+                <input type="text" name="monto-total" id="monto-total" required>
             </div>
             <div class="cell inputs">
                 <label for="pago" class="">Primer Pago: </label>
@@ -86,11 +86,11 @@
             </div>
             <div class="cell inputs">
                 <label for="monto" class="">Monto: </label>
-                <input type="text" name="monto" id="monto">
+                <input type="text" name="monto" id="monto" required>
             </div>
             <div class="cell inputs">
                 <label for="concepto" class="">concepto: </label>
-                <input type="text" name="concepto" id="concepto">
+                <input type="text" name="concepto" id="concepto" required>
             </div>
             <div class="cell grid-x align-center">
                 <button class="button">Crear</button>
