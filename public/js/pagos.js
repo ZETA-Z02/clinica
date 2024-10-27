@@ -135,6 +135,7 @@ function insert(array,controller,method='create'){
         success: function (response) {
             //console.log('success POST',response);
             alert('Registro de pago EXITOSO!',response);
+            getPagos()
         },error: function (error){
             //console.log('error POST',error);
             alert('Error al llenar los campos, INTENTARLO DE NUEVO',error);

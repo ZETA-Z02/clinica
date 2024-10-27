@@ -3,7 +3,7 @@
 --
 -- Host: localhost    Database: clinica
 -- ------------------------------------------------------
--- Server version	11.5.2-MariaDB
+-- Server version	11.5.2-MariaDB-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -53,25 +53,21 @@ CREATE TABLE `clientes` (
   `nombre` varchar(50) NOT NULL,
   `apellidos` varchar(50) NOT NULL,
   `dni` int(11) NOT NULL,
-  `sexo` varchar(15) NOT NULL,
-  `ciudad` varchar(50) NOT NULL,
+  `sexo` varchar(15) DEFAULT NULL,
+  `ciudad` varchar(50) DEFAULT NULL,
   `telefono` varchar(15) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `direccion` varchar(100) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `direccion` varchar(50) DEFAULT NULL,
   `feCreate` datetime DEFAULT current_timestamp(),
   `feUpdate` date DEFAULT NULL,
-  PRIMARY KEY (`idcliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`idcliente`),
+  UNIQUE KEY `unico_dato` (`dni`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `clientes`
 --
-
-LOCK TABLES `clientes` WRITE;
-/*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `login`
@@ -87,7 +83,7 @@ CREATE TABLE `login` (
   `password` varchar(300) DEFAULT NULL,
   `estado` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`idlogin`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,6 +92,8 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
+INSERT INTO `login` VALUES
+(1,1,'admin','admin','1'),
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,7 +111,7 @@ CREATE TABLE `pago_detalles` (
   `concepto` varchar(50) NOT NULL,
   `fecha` datetime DEFAULT current_timestamp(),
   PRIMARY KEY (`idpagodetalle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,6 +120,9 @@ CREATE TABLE `pago_detalles` (
 
 LOCK TABLES `pago_detalles` WRITE;
 /*!40000 ALTER TABLE `pago_detalles` DISABLE KEYS */;
+INSERT INTO `pago_detalles` VALUES
+(1,1,100,'pago inicial','2024-10-27 17:04:05'),
+(2,1,50,'pago numero 2','2024-10-27 17:04:37');
 /*!40000 ALTER TABLE `pago_detalles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +143,7 @@ CREATE TABLE `pagos` (
   `igv` double NOT NULL,
   `total` double NOT NULL,
   PRIMARY KEY (`idpago`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,6 +152,8 @@ CREATE TABLE `pagos` (
 
 LOCK TABLES `pagos` WRITE;
 /*!40000 ALTER TABLE `pagos` DISABLE KEYS */;
+INSERT INTO `pagos` VALUES
+(1,1,1,150,'2024-10-27 17:04:05',750,1062,900);
 /*!40000 ALTER TABLE `pagos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,10 +169,10 @@ CREATE TABLE `personal` (
   `nombre` varchar(100) NOT NULL,
   `apellidos` varchar(100) NOT NULL,
   `dni` int(11) NOT NULL,
-  `sexo` varchar(15) NOT NULL,
+  `sexo` varchar(15) DEFAULT NULL,
   `telefono` varchar(15) NOT NULL,
   `fechaNac` date DEFAULT NULL,
-  `email` varchar(100) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
   `foto` varchar(200) DEFAULT NULL,
   `feCreate` datetime DEFAULT current_timestamp(),
   `feUpdate` date DEFAULT NULL,
@@ -220,4 +223,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2024-09-13 13:01:23
+-- Dump completed on 2024-10-27 17:07:53

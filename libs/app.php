@@ -6,13 +6,13 @@ class App
   function __construct()
   {
     #echo "<p>Nueva APP</p>";
-    $url = $_GET['url'];
-    $url = rtrim($url, '/');
-    $url = explode('/', $url);
+    @$url = $_GET['url'];
+    @$url = rtrim($url, '/');
+    @$url = explode('/', $url);
 
-    if ($_SESSION['katari']) {
+    if (@$_SESSION['katari']) {
       #echo "Inicio de session";
-      if (empty($url[0]) || $url[1] == "login") {
+      if (empty(@$url[0]) || @$url[1] == "login") {
         $archivoController = "controller/login.php";
         require_once $archivoController;
         $controller = new Login;
