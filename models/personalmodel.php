@@ -24,7 +24,7 @@ class PersonalModel extends Model{
     public function Create($nombres,$apellidos,$dni,$telefono,$fechaCreacion,$usuario,$password){
         $this->conn->conn->begin_transaction();
         try {
-            $sql = "INSERT INTO personal (nombre,apellidos,dni,telefono,feCreate) VALUES ('$nombres','$apellidos','$dni','$telefono','$fechaCreacion');";      
+            $sql = "INSERT INTO personal (nombre,apellidos,dni,telefono,feCreate) VALUES ('$nombres','$apellidos','$dni','$telefono','$fechaCreacion');";
             $result = $this->conn->ConsultaSin($sql);
             error_log($result);
             $idpersonal = $this->conn->conn->insert_id;

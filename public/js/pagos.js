@@ -1,6 +1,7 @@
 //var host = "192.168.1.41";
 var host = "localhost";
 $(document).ready(function () {
+  numberFloat('#monto')
   numberLeght('#dni',8);
   numberLeght('#telefono',9);
   getPagos();
@@ -8,7 +9,7 @@ $(document).ready(function () {
   $("#formulario-nuevo-pago").hide();
   // Detalles pagos por id
   $(document).on("click",'#btn-detalle',function(){
-    console.log($(this).attr('id-data'));
+    //console.log($(this).attr('id-data'));
     let id = $(this).attr('id-data');
     $("#pagos").hide();
     $.ajax({
@@ -36,7 +37,7 @@ $(document).ready(function () {
   });
   // IMPRIMIR BOLETA
   $(document).on("click",'#btn-boleta',function(){
-    console.log($("#btn-detalle").attr('id-data'));
+    //console.log($("#btn-detalle").attr('id-data'));
     let id = $("#btn-detalle").attr('id-data');
     let btn = $(this).attr('href', `http://${host}/clinica/pagos/boleta/${id}`);
   });
@@ -56,15 +57,16 @@ $(document).ready(function () {
   $("#form-pago").on('submit',function(event){
     event.preventDefault();
     let formData = $(this).serialize();
-    console.log(formData);
+    //console.log(formData);
     insert(formData,'pagos','create');
+    $(this).trigger("reset");
     getPagos();
   })
   // Nuevo Pago END
   // Buscador
   $("#search").on("keyup", function() {
     var nombre = $(this).val().toLowerCase();
-    console.log(nombre);
+    //console.log(nombre);
     $.ajax({
       type: "GET",
       url: `http://${host}/clinica/pagos/search`,
@@ -131,11 +133,11 @@ function insert(array,controller,method='create'){
         url: `http://${host}/clinica/${controller}/${method}`,
         data: array,
         success: function (response) {
-            console.log('success POST',response);
-            alert('Success POST',response);
+            //console.log('success POST',response);
+            alert('Registro de pago EXITOSO!',response);
         },error: function (error){
-            console.log('error POST',error);
-            alert('error POST',error);
+            //console.log('error POST',error);
+            alert('Error al llenar los campos, INTENTARLO DE NUEVO',error);
         }
     });
   }

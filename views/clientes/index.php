@@ -59,7 +59,7 @@
             </div>
             <div class="cell inputs">
                 <label for="monto-total" class="">Monto total: </label>
-                <input type="text" name="monto-total" id="monto=total">
+                <input type="text" name="monto-total" id="monto-total">
             </div>
             <div class="cell inputs">
                 <label for="pago" class="">Primer Pago: </label>

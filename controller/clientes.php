@@ -44,7 +44,7 @@ class Clientes extends Controller{
         $apellidos = $_POST["apellidos"];
         $telefono = $_POST["telefono"];
         $monto_total = $_POST["monto-total"];
-        $pago = $_POST["pago"];
+        $pago = empty($_POST["pago"]) ? 0 : $_POST["pago"];
         $fechaCreacion = date('Y-m-d H:i:s');
         if($this->model->Create($nombres,$apellidos,$dni,$telefono,$fechaCreacion,$monto_total,$pago)){
             echo "SUCCESS";
@@ -79,6 +79,7 @@ class Clientes extends Controller{
     public function dni()
     {
         // Datos
+        $apiZeta = 'apis-token-11103.WQaaHijemn0xeAv1QypRX5W6mGeEiMuE';
         $token = 'apis-token-8574.bPsef4wHOYjVwA7bFoDMZqLLrNrAMKiY';
         $dni = $_POST["dni"];
         // Iniciar llamada a API

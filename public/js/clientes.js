@@ -1,29 +1,34 @@
 //var host = "192.168.1.41";
 var host = "localhost";
 $(document).ready(function () {
+  numberFloat("#pago")
+  numberFloat("#monto-total")
   numberLeght('#dni',8);
   numberLeght('#telefono',9);
   getClientes()
-  dni();
+  dni(); 
   $("#form-cliente").submit(function (event) {
     event.preventDefault();
     var formData = $(this).serialize();
-    console.log(formData);
+    //console.log(formData);
     insert(formData,'clientes','create');
+    $(this).trigger("reset");
     getClientes()
   });
   $("#form-update").submit(function (event){
     event.preventDefault();
     var formData = $(this).serialize();
-    console.log(formData);
-    insert(formData,'clientes','update')
+    //console.log(formData);
+    insert(formData,'clientes','update');
+    $(this).trigger("reset");
     getClientes()
   });
   $("#form-pago").submit(function(event) {
     event.preventDefault();
     var formData = $(this).serialize();
-    console.log(formData);
+    //console.log(formData);
     insert(formData,'clientes','nuevoPago');
+    $(this).trigger("reset");
     getClientes()
   });
 });
@@ -34,7 +39,7 @@ $(document).ready(function () {
 $(document).ready(function(){
   $("#search").on("keyup", function() {
     var nombre = $(this).val().toLowerCase();
-    console.log(nombre);
+    //console.log(nombre);
     $.ajax({
       type: "GET",
       url: `http://${host}/clinica/clientes/getCliente`,
@@ -42,7 +47,7 @@ $(document).ready(function(){
       dataType: "json",
       success: function (response) {
         let html = '';
-        console.log(response);
+        //console.log(response);
         response.forEach(element => {
           html += `
                 <tr id="${element.id}">
@@ -82,7 +87,7 @@ $(document).ready(function(){
     let nombres = $(this).parent().parent().find('td').eq(1).text();
     $("#idcliente").val(id);
     $("#cliente-name").html(nombres);
-    console.log("pago",id,nombres);
+    //console.log("pago",id,nombres);
     $("#tabla-datos-clientes").hide();
     $("#formulario-nuevo-pago").show();
   });
@@ -120,11 +125,11 @@ function insert(array,controller,method='create'){
       url: `http://${host}/clinica/${controller}/${method}`,
       data: array,
       success: function (response) {
-          console.log('success POST',response);
-          alert('Success POST',response);
+          //console.log('success POST',response);
+          alert('Registro EXITOSO!',response);
       },error: function (error){
-          console.log('error POST',error);
-          alert('error POST',error);
+          //console.log('error POST',error);
+          alert('Error al llenar los campos, INTENTARLO DE NUEVO',error);
       }
   });
 }
@@ -132,7 +137,7 @@ function dni() {
   var token = "apis-token-8574.bPsef4wHOYjVwA7bFoDMZqLLrNrAMKiY";
   $("#dni").on("keyup", function () {
     var dni = $("#dni").val();
-    console.log(dni.length);
+    //console.log(dni.length);
     if (dni.length == 8) {
       $.ajax({
         url: `http://${host}/clinica/clientes/dni`,
@@ -143,7 +148,7 @@ function dni() {
           if (data == 1) {
             alert("El DNI debe tener 8 dígitos");
           } else {
-            console.log(data);
+            //console.log(data);
             $("#nombre").val(data.nombres);
             $("#apellidos").val(
               data.apellidoPaterno + " " + data.apellidoMaterno
@@ -151,11 +156,11 @@ function dni() {
           }
         },
         error: function (xhr, status, error) {
-          console.log(error + "->No se pudo hacer la solicitud a la API");
+          //console.log(error + "->No se pudo hacer la solicitud a la API");
         },
       });
     } else {
-      console.log("no hay dni");
+      //console.log("no hay dni");
     }
   });
 }

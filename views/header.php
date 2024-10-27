@@ -5,6 +5,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Katari | Welcome</title>
+  <!-- icon -->
+   <link rel="shortcut icon" href="<?php echo constant('URL')?>icon.png" type="image/x-icon">
   <!-- Estilos foundation -->
   <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/foundation/css/foundation.css">
   <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/foundation/css/foundation-float.css">
@@ -32,6 +34,7 @@
   <!-- style general -->
    <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/style.css">
    <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/js/plugins/paginador/css/jpaginate.css">
+   <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/app.css">
 </head>
 
 <body>

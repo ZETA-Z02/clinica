@@ -10,18 +10,21 @@ $(document).ready(function () {
     let formData = $(this).serialize();
     console.log(formData);
     insert(formData,'personal','create');
+    $(this).trigger("reset");
   });
   $("#form-update").submit(function (event){
     event.preventDefault();
     let formData = $(this).serialize();
     console.log(formData);
     insert(formData,'personal','update');
+    $(this).trigger("reset");
   });
   $("#form-login-update").submit(function (event){
     event.preventDefault();
     let formData = $(this).serialize();
     console.log(formData);
     insert(formData,'personal','updateLogin');
+    $(this).trigger("reset");
   });
 });
 function getPersonal(){
@@ -58,10 +61,10 @@ function insert(array,controller,method='create'){
         data: array,
         success: function (response) {
             console.log('success POST',response);
-            alert('Success POST',response);
+            alert('Registor EXITOSO!',response);
         },error: function (error){
             console.log('error POST',error);
-            alert('error POST',error);
+            alert('Error en los campos, Intente de nuevo',error);
         }
     });
   }
