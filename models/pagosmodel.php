@@ -5,7 +5,7 @@ class PagosModel extends Model{
         parent::__construct();
     }
     public function Get(){
-        $sql = "SELECT CONCAT(c.nombre,' ',c.apellidos) as nombres,p.idcliente,p.idpago,p.monto,p.saldo,p.total FROM pagos p JOIN clientes c ON p.idcliente = c.idcliente;";
+        $sql = "SELECT CONCAT(c.nombre,' ',c.apellidos) as nombres,p.idcliente,p.idpago,p.monto,p.saldo,p.total FROM pagos p JOIN clientes c ON p.idcliente = c.idcliente ORDER BY p.idpago DESC;";
         $data = $this->conn->ConsultaCon($sql);
         return $data;
     }

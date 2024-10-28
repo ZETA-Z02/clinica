@@ -4,7 +4,7 @@ class ClientesModel extends Model{
         parent::__construct();
     }
     public function Get(){
-        $sql="SELECT * FROM clientes;";
+        $sql="SELECT * FROM clientes ORDER BY idcliente DESC;";
         $data = $this->conn->ConsultaCon($sql);
         return $data;
     }
