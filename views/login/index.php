@@ -36,7 +36,7 @@
     <div class="grid-container full login-container">
         <div class="grid-x login">
             <form method="POST" action="<?php echo constant('URL') ?>login/user" class="form-login">
-                <h1>Login</h1>
+                <h1>Iniciar Sesión</h1>
                 <div class="cell">
                     <label for="username">Usuario</label>
                     <input type="text" name="username" id="username">
@@ -46,7 +46,7 @@
                     <input type="password" name="password" id="password">
                 </div>
                 <div class="cell">
-                    <button class="btn-login">Login</button>
+                    <button class="btn-login">Ingresar</button>
                 </div>
             </form>
         </div>

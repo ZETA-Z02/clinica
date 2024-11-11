@@ -27,13 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="grid-x">
-        <div class="cell graficos">
-            <canvas id="bar"></canvas>
-        </div>
-    </div>
-    <hr>
-    <div class="grid-x grid-margin-x">
+    <div class="grid-x grid-margin-x botones">
         <div class="cell large-4 small-12 text-center">
             <a href="<?php echo constant('URL') ?>pagos" class="button success">ir a Pagos</a>
         </div>
@@ -42,6 +36,11 @@
         </div>
         <div class="cell large-4 small-12 text-center">
             <a href="<?php echo constant('URL') ?>personal" class="button alert">ir a Personal</a>
+        </div>
+    </div>
+    <div class="grid-x graficos">
+        <div class="cell graficos">
+            <canvas id="bar"></canvas>
         </div>
     </div>
 </div>

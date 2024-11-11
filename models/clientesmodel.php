@@ -9,7 +9,7 @@ class ClientesModel extends Model{
         return $data;
     }
     public function GetOne($id){
-        $sql="SELECT * FROM clientes WHERE idcliente = '$id';";
+        $sql="SELECT c.*, p.* FROM clientes c join pagos p on c.idcliente = p.idcliente WHERE c.idcliente = '$id';";
         $data = $this->conn->ConsultaArray($sql);
         return $data;
     }
@@ -70,6 +70,11 @@ class ClientesModel extends Model{
         $sql = "INSERT INTO pago_detalles VALUES (null,'$idpago','$monto','$concepto','$fecha');";
         $result = $this->conn->ConsultaSin($sql);
         return $result;
+    }
+    public function GetPagos($id){
+        $sql = "SELECT pd.* FROM pago_detalles pd JOIN pagos p ON pd.idpago = p.idpago WHERE p.idcliente = '$id';";
+        $data = $this->conn->ConsultaCon($sql);
+        return $data;
     }
 }
 ?>

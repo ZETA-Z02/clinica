@@ -14,3 +14,16 @@ th{
 label{
   font-size: 20px !important;
 }
+details{
+  /* border: 2px solid #183467 !important; */
+  font-size: 20px !important;
+  padding: 5px;
+}
+details summary{
+  font-weight: 900;
+  letter-spacing: 2px;
+  padding: 10px;
+  border: 2px solid #183467 !important;
+  border-radius: 20px;
+  font-size: 20px !important;
+}

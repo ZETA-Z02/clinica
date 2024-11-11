@@ -6,6 +6,7 @@ $(document).ready(function () {
   numberLeght('#dni',8);
   numberLeght('#telefono',9);
   getClientes()
+  detallePagos()
   dni(); 
   $("#form-cliente").submit(function (event) {
     event.preventDefault();
@@ -32,8 +33,6 @@ $(document).ready(function () {
     getClientes()
   });
 });
-
-
 
 // SEARCH -------------------------------------------------------------------------------
 $(document).ready(function(){
@@ -103,11 +102,11 @@ function getClientes(){
       data.forEach(element => {
         html += `
               <tr>
-                <td>${element.id}</td>
+                <td><a href="http://${host}/clinica/clientes/detalles/${element.id}" class="button">Detalles</a></td>
                 <td>${element.nombres}</td>
                 <td>${element.telefono}</td>
-                <td><a href="http://${host}/clinica/clientes/detalles/${element.id}" class="button">Detalles</a></td>
-                <td><button class="button warning" id="btn-pago" id-data="${element.id}">Nuevo Pago</button></td>
+                <td><button class="button warning" id="btn-pago" id-data="${element.id}">Pagos</button></td>
+                <td><button class="button success" id="btn-pago" id-data="${element.id}">Nuevo Pago</button></td>
               </tr>
             `;
       });
@@ -132,7 +131,7 @@ function insert(array,controller,method='create'){
           //console.log('error POST',error);
           alert('Error al llenar los campos, INTENTARLO DE NUEVO',error);
       }
-  });
+  }); 
 }
 function dni() {
   var token = "apis-token-8574.bPsef4wHOYjVwA7bFoDMZqLLrNrAMKiY";
@@ -163,5 +162,32 @@ function dni() {
     } else {
       //console.log("no hay dni");
     }
+  });
+}
+
+function detallePagos(){
+  let id = $("#id").val();
+  $.ajax({
+    type: "POST",
+    url: `http://${host}/clinica/clientes/detallesPagos`,
+    dataType: "json",
+    data: {id},
+    success: function (response) {
+      console.log(response);
+      let html = "";
+      response.forEach((element) => {
+        html += `
+                  <tr>
+                      <th>${element.fecha}</th>
+                      <th>${element.concepto}</th>
+                      <th>s/.${element.monto}</th>
+                  </tr>
+              `;
+      });
+      $("#data-pagos-detalles").html(html);
+    },
+    error: function (error) {
+      console.log("error GET", error);
+    },
   });
 }

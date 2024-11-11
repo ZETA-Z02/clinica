@@ -13,6 +13,7 @@ class Pagos extends Controller{
                 'idcliente' => $row['idcliente'],
                 'idpago' => $row['idpago'],
                 'nombres' => $row['nombres'],
+                'dni' => $row['dni'],
                 'monto' => $row['monto'],
                 'saldo' => $row['saldo'],
                 'total' => $row['total'],
@@ -34,8 +35,8 @@ class Pagos extends Controller{
         echo json_encode($json);
     }
     public function search(){
-        $nombre = $_GET['nombre'];
-        $data = $this->model->Search($nombre);
+        $data = $_GET['data'];
+        $data = $this->model->Search($data);
         while($row = mysqli_fetch_assoc($data)){
             $json[] = array(
                 'idcliente' => $row['idcliente'],
@@ -49,7 +50,44 @@ class Pagos extends Controller{
         echo json_encode($json);
     }
     public function read(){
-
+        // FECHA - MONTO-TOTAL - IMPORTE(PAGO) - DEUDA - CONCEPTO
+        $id = $_POST['id'];
+        //$id = '1';
+        $detalles = $this->model->GetPagos($id);
+        $pago = $this->model->GetOnePago($id);
+        $detalles = mysqli_fetch_all($detalles,MYSQLI_ASSOC);
+        $total = $pago['total'];
+        for($i = 0; $i <= count($detalles); $i++){
+            $fechas[$i] = $detalles[$i]['fecha'] ? $detalles[$i]['fecha'] : '';
+            $montos_pagos[$i] = $detalles[$i]['monto'] ? $detalles[$i]['monto'] : '';
+            $conceptos[$i] = $detalles[$i]['concepto'] ? $detalles[$i]['concepto'] : '';
+            if($total == $pago['total']){
+                $montos[$i] = $total;
+                $total = $pago['total'] - $detalles[$i]['monto'];
+                $deuda[$i] = $total;
+                continue;
+            }
+            $montos[$i] = $total;
+            $total = $total - $detalles[$i]['monto'];
+            $deuda[$i] = $total;
+        }
+        // var_dump($montos);
+        // echo "<br>";
+        // echo var_dump($deuda);
+        // echo "<br>";
+        // echo var_dump($fechas) ."<br>";
+        // echo var_dump($montos_pagos) ."<br>";
+        // echo var_dump($conceptos) ."<br>";
+        // echo $pago['saldo']."<br>";
+        // echo $pago['monto']."<br>";
+        $json = array(
+            "fechas"=>$fechas,
+            "monto_total"=>$montos,
+            "importe"=> $montos_pagos,
+            "deudas"=>$deuda,
+            "conceptos"=>$conceptos,
+        );
+        echo json_encode($json);
     }
     public function create(){
         $idpago = $_POST['idpago'];

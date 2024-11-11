@@ -17,8 +17,8 @@
             <table class="stack">
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>nombres</th>
+                        <th>Detalles</th>
+                        <th>Nombres</th>
                         <th>Celular</th>
                         <th colspan="2">Acciones</th>
                     </tr>

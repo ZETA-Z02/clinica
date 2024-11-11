@@ -35,7 +35,7 @@
                 <input type="text" name="email" id="email" value="<?php echo $this->data['email'];?>">
             </div>
             <div class="cell grid-x align-center">
-                <button class="button">Crear</button>
+                <button class="button">Actualizar</button>
             </div>
         </form>
     </div>

@@ -125,5 +125,17 @@ class Clientes extends Controller{
             echo "ERROR";
         }
     }
+    public function detallesPagos(){
+        $id = $_POST['id'];
+        $data = $this->model->GetPagos($id);
+        while($row = mysqli_fetch_assoc($data)){
+            $json[] = array(
+                'monto' => $row['monto'],
+                'concepto' => $row['concepto'],
+                'fecha' => $row['fecha'],
+            );
+        }
+        echo json_encode($json);
+    }
 }
 ?>
