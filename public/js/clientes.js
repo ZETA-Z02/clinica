@@ -14,7 +14,6 @@ $(document).ready(function () {
     //console.log(formData);
     insert(formData,'clientes','create');
     $(this).trigger("reset");
-    getClientes()
   });
   $("#form-update").submit(function (event){
     event.preventDefault();
@@ -126,7 +125,8 @@ function insert(array,controller,method='create'){
       success: function (response) {
           //console.log('success POST',response);
           alert('Registro EXITOSO!',response);
-          getClientes()
+          getClientes();
+          window.location.href=`http://${host}/clinica/pagos`;
       },error: function (error){
           //console.log('error POST',error);
           alert('Error al llenar los campos, INTENTARLO DE NUEVO',error);
